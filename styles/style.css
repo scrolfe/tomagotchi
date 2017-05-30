@@ -1,0 +1,21 @@
+body{
+    background-color: rgb(119, 54, 67);
+}
+img {
+    margin: 0 auto;
+    display: block;
+    border-radius: 900px;
+}
+input {
+    margin: 0 auto;
+    display: block;
+}
+h2 {
+    margin: 0 auto;
+    text-align: center;
+    color: rgb(67, 136, 110);
+}
+button {
+    margin: 0 auto;
+    display: block;
+}
