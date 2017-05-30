@@ -19,3 +19,9 @@ button {
     margin: 0 auto;
     display: block;
 }
+span {
+    text-align: center;
+    display: block;
+    font-size: 25px;
+    color: rgb(61, 187, 214);
+}
