@@ -27,6 +27,11 @@ var kitty = {
     }
 }}
 
+$('#submit').on('click', function (){
+    kitty.name = $('#input').val()
+})
+console.log(kitty.name)
+
 // //tests
 // kitty.name
 // kitty.kittyMeter
