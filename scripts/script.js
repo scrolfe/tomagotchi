@@ -5,33 +5,50 @@ var kitty = {
     hungerMeter: 5,
     funMeter: 5,
     happyCat: true,
-    stroke: function (cozyMeter) {
-        if (cozyMeter <=10) {
-            cozyMeter++
+    stroke: function () {
+        if (this.cozyMeter <=10) {
+            // console.log("hello")
+            this.cozyMeter++
         } else {
-            cozyMeter = 0
+            this.cozyMeter = 0
+        }
+        // console.log("hello")
+    },
+    feed: function () {
+        if (this.hungerMeter <= 10) {
+            this.hungerMeter++
+        } else {
+            this.hungerMeter = 0
         }
     },
-    feed: function (hungerMeter) {
-        if (hungerMeter <= 10) {
-            hungerMeter++
+    play: function () {
+        if (this.funMeter <= 10) {
+            this.funMeter++
         } else {
-            hungerMeter = 0
-        }
-    },
-    play: function (funMeter) {
-        if (funMeter <= 10) {
-            funMeter++
-        } else {
-            funMeter = 0
+            this.funMeter = 0
     }
 }}
 
-$('#submit').on('click', function (){
-    kitty.name = $('#input').val()
-})
-console.log(kitty.name)
+$('#messageBox').text('Welcome to the KittyKareSenter')
 
+$('#submit').on('click', function () {
+    kitty.name = $('#input').val()
+    $('#messageBox').text("Your kitty's name is " + kitty.name + ". Congratulations!! You are now a cat-sitter.")
+})
+
+$('#stroke').on('click', function () {
+    kitty.stroke()
+    $('#cozy').text(kitty.cozyMeter)
+    console.log(kitty.cozyMeter)
+})
+$('#feed').on('click', function () {
+    kitty.feed()
+    $('#hungry').text(kitty.hungerMeter)
+})
+$('#play').on('click', function () {
+    kitty.play()
+    $('#fun').text(kitty.funMeter)
+})
 // //tests
 // kitty.name
 // kitty.kittyMeter
