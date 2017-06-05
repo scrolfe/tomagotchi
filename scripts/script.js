@@ -10,7 +10,7 @@ var kitty = {
         } else {
             this.cozyMeter = 0
             $('html, body').animate({scrollTop:0}, 'fast');
-            $('h1').text(this.name + " has been over stimulated by pets and pounces on your face! You die :(")
+            $('h1').text(this.name + " has been over-stimulated by pets and pounces on your face! You die :(")
 
         }
         // console.log("hello")
@@ -40,6 +40,7 @@ $('#submit').on('click', function () {
     kitty.name = $('#input').val()
     $('html, body').animate({scrollTop:0}, 'fast');
     $('#messageBox').text("Your kitty's name is " + kitty.name + ". Congratulations!! You are now an official cat-sitter.")
+    startDecay();
 })
 
 $('#stroke').on('click', function () {
@@ -54,25 +55,28 @@ $('#play').on('click', function () {
     kitty.play()
     $('#fun').text(kitty.funMeter)
 })
-
-setInterval(function () {
-    kitty.cozyMeter--
-    $('#cozy').text(kitty.cozyMeter)
-}, 500);
-setInterval(function () {
-    kitty.hungerMeter--
-    $('#hungry').text(kitty.hungerMeter)
-}, 500);
-setInterval(function () {
-    kitty.funMeter--
-    $('#fun').text(kitty.funMeter)
-}, 500);
+var startDecay = function () {
+    setInterval(function () {
+        kitty.cozyMeter--
+        $('#cozy').text(kitty.cozyMeter)
+    }, 2000);
+    setInterval(function () {
+        kitty.hungerMeter--
+        $('#hungry').text(kitty.hungerMeter)
+    }, 2000);
+    setInterval(function () {
+        kitty.funMeter--
+        $('#fun').text(kitty.funMeter)
+    }, 2000)
+};
 
 var catEnd = function () {
-    if (cozyMeter === 0 && hungerMeter === 0 && funMeter === 0) {
-        $('.messageBox').text('Your poor kitty has passed away!')
+    if (kitty.cozyMeter <= 0 && kitty.hungerMeter <= 0 && kitty.funMeter <= 0) {
+        $('html, body').animate({scrollTop:0}, 'fast');
+        $('h1').text('Your poor kitty has passed away!')
     }
 };
+catEnd();
 // //tests
 // kitty.name
 // kitty.kittyMeter
