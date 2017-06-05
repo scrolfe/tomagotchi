@@ -8,30 +8,36 @@ var kitty = {
             // console.log("hello")
             this.cozyMeter++
         } else {
-            this.cozyMeter = 0
+            this.cozyMeter = 1
             $('html, body').animate({scrollTop:0}, 'fast');
             $('h1').text(this.name + " has been over-stimulated by pets and pounces on your face! You die :(")
-
+            setTimeout(function (){window.location.reload()}, 4000)
         }
+
         // console.log("hello")
     },
     feed: function () {
         if (this.hungerMeter <= 9) {
             this.hungerMeter++
         } else {
-            this.hungerMeter = 0
+            this.hungerMeter = 1
             $('html, body').animate({scrollTop:0}, 'fast');
             $('h1').text(this.name + " is so full.. Too full! " + this.name + " Takes a nap that never ends :(")
+            setTimeout(function (){window.location.reload()}, 4000)
         }
+
     },
     play: function () {
         if (this.funMeter <= 9) {
             this.funMeter++
         } else {
-            this.funMeter = 0
+            this.funMeter = 1
             $('html, body').animate({scrollTop:0}, 'fast');
             $('h1').text(this.name + " is feeling far TOO playful and attacks your computer charger. Your computer crashes to the ground, exploding and starting a small fire.")
+            $('img').attr('src', '../images/spaceCat.jpg')
+            setTimeout(function (){window.location.reload()}, 7000)
     }
+
 }}
 
 $('#messageBox').text('Welcome to the KittyCareCenterForKet')
@@ -42,8 +48,10 @@ $('#submit').on('click', function () {
     $('#messageBox').text("Your kitty's name is " + kitty.name + ". Congratulations!! You are now an official cat-sitter.")
     startDecay();
     buttonsOn();
-    deadCheck();
+    // deadCheck();
 });
+
+
 var buttonsOn = function () {
     $('#stroke').on('click', function () {
         kitty.stroke()
@@ -62,6 +70,7 @@ var startDecay = function () {
     setInterval(function () {
         kitty.cozyMeter--
         $('#cozy').text(kitty.cozyMeter)
+        deadCheck();
     }, 2000);
     setInterval(function () {
         kitty.hungerMeter--
@@ -71,27 +80,15 @@ var startDecay = function () {
         kitty.funMeter--
         $('#fun').text(kitty.funMeter)
     }, 2000)
+
 };
 
 var deadCheck = function () {
     console.log("check")
     if (kitty.cozyMeter <= 0 || kitty.hungerMeter <= 0 || kitty.funMeter <= 0) {
-        console.log("check2")
+        console.log("if statement")
         $('html, body').animate({scrollTop:0}, 'fast');
-        $('#messageBox').text('Poor ' + kitty.name + ' has passed away! Big time frowny face :()');
-        setTimeout(function () {
-            window.location.reload();
-        }, 4000);
-    }
-};
-
-// //tests
-// kitty.name
-// kitty.kittyMeter
-// kitty.cozyMeter
-// kitty.hungerMeter
-// kitty.funMeter
-// kitty.happyCat
-// kitty.stroke()
-// kitty.feed()
-// kitty.play()
+        $('#messageBox').text('Poor ' + kitty.name + ' has passed away! Big time frowny face :(');
+        setTimeout(function () {window.location.reload()}, 2000)
+        }
+    };
