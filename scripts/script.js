@@ -41,20 +41,22 @@ $('#submit').on('click', function () {
     $('html, body').animate({scrollTop:0}, 'fast');
     $('#messageBox').text("Your kitty's name is " + kitty.name + ". Congratulations!! You are now an official cat-sitter.")
     startDecay();
+    buttonsOn();
 })
-
-$('#stroke').on('click', function () {
-    kitty.stroke()
-    $('#cozy').text(kitty.cozyMeter)
-})
-$('#feed').on('click', function () {
-    kitty.feed()
-    $('#hungry').text(kitty.hungerMeter)
-})
-$('#play').on('click', function () {
-    kitty.play()
-    $('#fun').text(kitty.funMeter)
-})
+var buttonsOn = function () {
+    $('#stroke').on('click', function () {
+        kitty.stroke()
+        $('#cozy').text(kitty.cozyMeter)
+    })
+    $('#feed').on('click', function () {
+        kitty.feed()
+        $('#hungry').text(kitty.hungerMeter)
+    })
+    $('#play').on('click', function () {
+        kitty.play()
+        $('#fun').text(kitty.funMeter)
+    })
+};
 var startDecay = function () {
     setInterval(function () {
         kitty.cozyMeter--
