@@ -34,7 +34,7 @@ var kitty = {
     }
 }}
 
-$('#messageBox').text('Welcome to the KittyKareSenter')
+$('#messageBox').text('Welcome to the KittyCareCenterForKet')
 
 $('#submit').on('click', function () {
     kitty.name = $('#input').val()
@@ -42,7 +42,8 @@ $('#submit').on('click', function () {
     $('#messageBox').text("Your kitty's name is " + kitty.name + ". Congratulations!! You are now an official cat-sitter.")
     startDecay();
     buttonsOn();
-})
+    deadCheck();
+});
 var buttonsOn = function () {
     $('#stroke').on('click', function () {
         kitty.stroke()
@@ -72,13 +73,18 @@ var startDecay = function () {
     }, 2000)
 };
 
-var catEnd = function () {
-    if (kitty.cozyMeter <= 0 && kitty.hungerMeter <= 0 && kitty.funMeter <= 0) {
+var deadCheck = function () {
+    console.log("check")
+    if (kitty.cozyMeter <= 0 || kitty.hungerMeter <= 0 || kitty.funMeter <= 0) {
+        console.log("check2")
         $('html, body').animate({scrollTop:0}, 'fast');
-        $('h1').text('Your poor kitty has passed away!')
+        $('#messageBox').text('Poor ' + kitty.name + ' has passed away! Big time frowny face :()');
+        setTimeout(function () {
+            window.location.reload();
+        }, 4000);
     }
 };
-catEnd();
+
 // //tests
 // kitty.name
 // kitty.kittyMeter
