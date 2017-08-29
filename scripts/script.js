@@ -25,7 +25,6 @@ var kitty = {
             $('h1').text(this.name + " is so full.. Too full! " + this.name + " Takes a nap that never ends :(")
             setTimeout(function (){window.location.reload()}, 4000)
         }
-
     },
     play: function () {
         if (this.funMeter <= 9) {
@@ -33,23 +32,22 @@ var kitty = {
         } else {
             this.funMeter = 1
             $('html, body').animate({scrollTop:0}, 'fast');
-            $('h1').text(this.name + " is feeling far TOO playful and attacks your computer charger. Your computer crashes to the ground, exploding and starting a small fire.")
+            $('h1').text(this.name + " is feeling far TOO playful and attacks your computer. Your computer crashes to the ground, starting a fire.")
             setTimeout(function (){window.location.reload()}, 7000)
     }
 
 }}
 
-$('#messageBox').text('Welcome to the KittyCareCenterForKet')
+$('#messageBox').text('Welcome to the KittyCareCenter')
 
 $('#submit').on('click', function () {
     kitty.name = $('#input').val()
     $('html, body').animate({scrollTop:0}, 'fast');
-    $('#messageBox').text("Your kitty's name is " + kitty.name + ". Congratulations!! You are now an official cat-sitter.")
+    $('#messageBox').text("Your kitty's name is " + kitty.name + ". Congratulations!! You are a cat-sitter.")
     startDecay();
     buttonsOn();
     // deadCheck();
 });
-
 
 var buttonsOn = function () {
     $('#stroke').on('click', function () {
@@ -79,15 +77,13 @@ var startDecay = function () {
         kitty.funMeter--
         $('#fun').text(kitty.funMeter)
     }, 2000)
-
 };
 
 var deadCheck = function () {
     console.log("check")
     if (kitty.cozyMeter <= 0 || kitty.hungerMeter <= 0 || kitty.funMeter <= 0) {
-        console.log("if statement")
         $('html, body').animate({scrollTop:0}, 'fast');
-        $('#messageBox').text('Poor ' + kitty.name + ' has passed away! Big time frowny face :(');
+        $('#messageBox').text('Poor ' + kitty.name + ' has passed away! :(');
         setTimeout(function () {window.location.reload()}, 2000)
         }
     };
