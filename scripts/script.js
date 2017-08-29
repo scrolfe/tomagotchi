@@ -34,7 +34,6 @@ var kitty = {
             this.funMeter = 1
             $('html, body').animate({scrollTop:0}, 'fast');
             $('h1').text(this.name + " is feeling far TOO playful and attacks your computer charger. Your computer crashes to the ground, exploding and starting a small fire.")
-            $('img').attr('src', '../images/spaceCat.jpg')
             setTimeout(function (){window.location.reload()}, 7000)
     }
 
